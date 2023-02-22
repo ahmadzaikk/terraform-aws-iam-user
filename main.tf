@@ -8,28 +8,17 @@
 #              convention.
 
 
-module "labels" {
-  source  = "clouddrove/labels/aws"
-  version = "1.3.0"
-
-  name        = var.name
-  environment = var.environment
-  repository  = var.repository
-  managedby   = var.managedby
-  attributes  = var.attributes
-  label_order = var.label_order
-}
 
 # Module      : IAM user
 # Description : Terraform module to create IAm user resource on AWS.
 resource "aws_iam_user" "default" {
   count = var.enabled ? 1 : 0
 
-  name                 = module.labels.id
+  name                 = var.name
   force_destroy        = var.force_destroy
   path                 = var.path
   permissions_boundary = var.permissions_boundary
-  tags                 = module.labels.tags
+  tags                 = var.tags
 }
 
 resource "aws_iam_access_key" "default" {
