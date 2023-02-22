@@ -105,12 +105,6 @@ variable "policy_arn" {
   description = "The ARN of the policy you want to apply."
   sensitive   = true
 }
-variable "policy_inline" {
-  type        = string
-  default     = ""
-  description = "The ARN of the policy you want to apply."
-  sensitive   = true
-}
 
 variable "groups" {
   type        = list(string)
