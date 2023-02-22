@@ -30,7 +30,7 @@ resource "aws_iam_access_key" "default" {
 
 resource "aws_iam_user_policy" "default" {
   count  = var.enabled && var.policy_enabled && var.policy_arn == "" ? 1 : 0
-  name   = format("%s-policy", module.labels.id)
+  name   = var.name
   user   = aws_iam_user.default.*.name[0]
   policy = var.policy
 }
