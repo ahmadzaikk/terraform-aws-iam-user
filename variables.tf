@@ -89,7 +89,7 @@ variable "status" {
 }
 
 variable "policy" {
-  default     = null
+  default     = ""
   description = "The policy document."
 }
 
