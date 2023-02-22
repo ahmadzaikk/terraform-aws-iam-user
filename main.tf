@@ -29,7 +29,7 @@ resource "aws_iam_user" "default" {
 #}
 
 resource "aws_iam_user_policy" "default" {
-  count  = var.enabled && var.policy_enabled && var.policy_inline == "" ? 1 : 0
+  count  = var.enabled && var.policy_enabled && var.policye == "" ? 1 : 0
   name   = var.name
   user   = aws_iam_user.default.*.name[0]
   policy = var.policy
