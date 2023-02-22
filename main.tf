@@ -32,7 +32,18 @@ resource "aws_iam_user_policy" "default" {
   count  = var.enabled && var.policy_enabled && var.policy == "" ? 1 : 0
   name   = var.name
   user   = aws_iam_user.default.*.name[0]
-  policy = var.policy
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "ec2:Describe*",
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
 }
 
 resource "aws_iam_user_policy_attachment" "default" {
