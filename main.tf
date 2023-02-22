@@ -26,7 +26,7 @@ resource "aws_iam_user" "default" {
   #user    = aws_iam_user.default.*.name[0]
   #pgp_key = var.pgp_key
   #status  = var.status
-}
+#}
 
 resource "aws_iam_user_policy" "default" {
   count  = var.enabled && var.policy_enabled && var.policy_arn == "" ? 1 : 0
